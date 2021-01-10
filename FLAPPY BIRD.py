@@ -54,7 +54,84 @@ class Bird():
           self.image = self.images[2]
           
           
-          
+###柱子1###
+class Pipe_1():
+     def __init__(self):  #初始化
+          self.images = [pipe_up_image, pipe_down_image]
+          self.rand= random.randrange(50, 270, 20)
+          self.rect_up = self.images[0].get_rect()  #上部分柱子
+          self.rect_down = self.images[1].get_rect()  #下部分柱子
+          self.order = 1  #柱子编号
+          self.rect_up.x = 1.5 * screen_width  #位置
+          self.rect_down.x = 1.5 * screen_width
+          self.rect_up.y = 400 - self.rand
+          self.rect_down.y  = - self.rand - 20
+     def draw(self, screen):  #画在屏幕上
+          screen.blit(self.images[0], (self.rect_up.x, self.rect_up.y))
+          screen.blit(self.images[1], (self.rect_down.x, self.rect_down.y))
+     def move_x(self):  #柱子动作规律
+          if self.rect_up.x > -pipe_width:
+               self.rect_up.x -= pipe_speed
+               self.rect_down.x -= pipe_speed
+          else:
+               self.reset()
+     def reset(self):  #移出屏幕后重新进入屏幕
+          self.rand = random.randrange(50, 270, 20)
+          self.rect_up.x = screen_width
+          self.rect_down.x = screen_width
+          self.rect_up.y = 400 - self.rand
+          self.rect_down.y  = -self.rand - 20  ##柱子是320个像素点，地面以上部分400个像素点，两柱之间距离有点近，- 20拉大20个像素的距离，可根据喜好随意设置
+          self.order += 2
+     def collide(self, bird_rect):  #判断与小鸟的碰撞
+          if self.rect_up.colliderect(bird_rect):
+               collide_pipe = 1
+          elif self.rect_down.colliderect(bird_rect):
+               collide_pipe= 1
+          else:
+               collide_pipe = 0
+          return collide_pipe
+     def halt(self):
+          pass
+     
+###柱子2，与柱子1一模一样，不再注释###
+class Pipe_2():
+     def __init__(self):
+          self.images = [pipe_up_image, pipe_down_image]
+          self.rand= random.randrange(50, 270, 20)
+          self.rect_up = self.images[0].get_rect()
+          self.rect_down = self.images[1].get_rect()
+          self.order = 0
+          self.reset()
+     def draw(self, screen):
+          screen.blit(self.images[0], (self.rect_up.x, self.rect_up.y))
+          screen.blit(self.images[1], (self.rect_down.x, self.rect_down.y))
+     def move_x(self):
+          if pipe_1.rect_up.x < self.rect_up.x:
+               self.rect_up.x = pipe_1.rect_up.x + (screen_width + pipe_width)/2
+               self.rect_down.x = pipe_1.rect_down.x + (screen_width + pipe_width)/2
+          elif pipe_1.rect_up.x > self.rect_up.x and self.rect_up.x > -pipe_width:
+               self.rect_up.x -= pipe_speed
+               self.rect_down.x -= pipe_speed
+          else:
+               self.reset()
+     def reset(self):
+          self.rand = random.randrange(50, 270, 20)
+          self.rect_up.x = pipe_1.rect_up.x + (screen_width + pipe_width)/2
+          self.rect_down.x = pipe_1.rect_up.x + (screen_width + pipe_width)/2
+          self.rect_up.y = 400 - self.rand
+          self.rect_down.y  = - self.rand - 20
+          self.order += 2
+     def collide(self, bird_rect):
+          if self.rect_up.colliderect(bird_rect):
+               collide_pipe = 1
+          elif self.rect_down.colliderect(bird_rect):
+               collide_pipe= 1
+          else:
+                collide_pipe = 0
+          return collide_pipe
+     def halt(self):
+          pass
+               
           
           ###地面###
 class Land():
