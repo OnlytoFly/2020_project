@@ -3,7 +3,7 @@ import sys
 from pygame.locals import *
 import random
 
-
+##小鸟类##
 class Bird():
      def __init__(self, pos_x, pos_y, speed):  #初始化
           self.images = [bird_0_image, bird_1_image, bird_2_image]
