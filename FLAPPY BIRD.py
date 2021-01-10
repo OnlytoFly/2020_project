@@ -52,3 +52,53 @@ class Bird():
      def die(self):  #小鸟死亡
           self.rect.y = 365
           self.image = self.images[2]
+          
+          
+          
+          
+          ###地面###
+class Land():
+     def __init__(self):  #初始化
+          self.image = land_image
+          self.rect = self.image.get_rect()
+          self.rect.x = 0
+          self.rect.y = 400
+          
+     def draw(self, screen):  #画在屏幕上
+          screen.blit(self.image, (self.rect.x, self.rect.y))
+     def move_x(self):  #地面动作规律
+          if self.rect.x > -44:
+               self.rect.x -= pipe_speed
+          else:
+               self.rect.x = 0
+     def collide(self, bird_rect):  #判断与小鸟碰撞
+          if self.rect.colliderect(bird_rect):
+               collide_land = 1
+          else:
+               collide_land = 0
+          return collide_land
+     def halt(self):
+          pass
+     
+###分数###
+class Score():
+     def __init__(self):
+          self.images = [num_0_image, num_1_image, num_2_image, num_3_image,
+                         num_4_image, num_5_image, num_6_image, num_7_image,
+                         num_8_image, num_9_image]
+          self.hun_pos_3 = 108
+          self.dec_pos_3 = 132
+          self.dec_pos_2 = 120
+          self.uni_pos_3 = 156
+          self.uni_pos_2 = 144
+          self.uni_pos_1 = 132
+     def draw(self, screen, score):  #画在屏幕上，为了保持分数在屏幕正中央，判断分数有几位，根据位数画图
+          if score < 10:  
+               screen.blit(self.images[score], (self.uni_pos_1, 0))
+          if score >= 10 and score <100:
+               screen.blit(self.images[score%10], (self.uni_pos_2, 0))
+               screen.blit(self.images[int(score/10)], (self.dec_pos_2, 0))
+          if score > 100:
+               screen.blit(self.images[score%10], (self.uni_pos_3, 0))
+               screen.blit(self.images[int((score%100)/10)], (self.dec_pos_3, 0))
+               screen.blit(self.images[int(score/100)], (self.hun_pos_3, 0))
