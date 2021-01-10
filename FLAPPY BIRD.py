@@ -158,6 +158,7 @@ class Land():
           pass
      
 ###分数###
+##积分方式:通过的柱子数量##
 class Score():
      def __init__(self):
           self.images = [num_0_image, num_1_image, num_2_image, num_3_image,
