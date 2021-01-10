@@ -134,6 +134,7 @@ class Pipe_2():
                
           
           ###地面###
+          ##生成地面,触碰之后会游戏结束##
 class Land():
      def __init__(self):  #初始化
           self.image = land_image
