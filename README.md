@@ -11,6 +11,7 @@
 
 #### 测试环境:
  - Windows10 Python3.7
+ - Windows10 Python3.9
  - Ubuntu Python2.7
  - Ubuntu Python3.6
 
