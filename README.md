@@ -1,0 +1,1 @@
+我们要使用python开源做一个小游戏：FlAPPY BIRD
