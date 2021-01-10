@@ -13,3 +13,6 @@
  - Windows10 Python3.7
  - Ubuntu Python2.7
  - Ubuntu Python3.6
+
+FLAPPY BIRD.py 为本项目的源文件
+FLAPPY BIRD(with annotation)-checkpoint.ipynb 为jupyter notebook里使用的running文件
