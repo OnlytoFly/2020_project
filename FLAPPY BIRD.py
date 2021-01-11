@@ -20,6 +20,7 @@ class Bird():
           self.score = 0  #分数
           self.direct = 1  #用于开始界面，小鸟上下浮动的动画，判断小鸟飞动方向
      def draw(self, screen):  #画在屏幕上
+          ##打印##
           screen.blit(self.image, (self.rect.x, self.rect.y))
      def flap(self):  #扇翅膀动画
           if self.order >= self.number - 1:
