@@ -296,6 +296,7 @@ def ready_page():
           clock.tick(30)  #帧速最高不超过30ms/帧
           
 ###游戏界面，接收上一界面的信息，以保持画面不断帧###
+##如果要进行界面的大小修改，这里是重点##
 def start_page(start_x, start_y, start_speed):
      pygame.init()
      collide_sound = pygame.mixer.Sound("collide_sound.wav")  #加载碰撞声
