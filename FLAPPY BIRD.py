@@ -199,7 +199,7 @@ ready_y = 210  #ready界面下小鸟的位置
 game_over_x = 60
 game_over_y = 365  #game over界面下小鸟的位置
 
-###加载所有图片###
+###加载所有的图片###
 background_image = pygame.image.load("bg_day.png")
 land_image = pygame.image.load("land.png")
 pipe_up_image = pygame.image.load("pipe_up.png")
