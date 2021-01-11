@@ -143,7 +143,7 @@ class Land():
           self.rect.x = 0
           self.rect.y = 400
           
-     def draw(self, screen):  #画在屏幕上
+     def draw(self, screen):  #打印
           screen.blit(self.image, (self.rect.x, self.rect.y))
      def move_x(self):  #地面动作规律
           if self.rect.x > -44:
